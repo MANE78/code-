@@ -1,108 +1,72 @@
-/* --- Global Styles & Variables --- */
+/* --- "Million-Dollar" Design - Dramatic Minimalist --- */
+
+/* --- Core Variables --- */
 :root {
-    --primary-color: #007BFF;
-    --primary-hover-color: #0056b3;
-    --light-bg: #f4f4f4;
-    --light-card-bg: #fff;
-    --light-text: #333;
-    --light-heading: #333;
-    --light-subtle-text: #555;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-    --dark-bg: #121212;
-    --dark-card-bg: #1e1e1e;
-    --dark-text: #e0e0e0;
-    --dark-heading: #ffffff;
-    --dark-subtle-text: #aaaaaa;
-
-    --bg-color: var(--light-bg);
-    --card-bg-color: var(--light-card-bg);
-    --text-color: var(--light-text);
-    --heading-color: var(--light-heading);
-    --subtle-text-color: var(--light-subtle-text);
+    --bg-color: #111111;
+    --card-color: #1a1a1a;
+    --border-color: #333333;
+    --text-color: #f0f0f0;
+    --heading-color: #ffffff;
+    --accent-color: #FFD700; /* Gold/Yellow for high contrast */
+    --accent-hover-color: #ffffff;
 }
 
+/* --- Base & Typography --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
 }
-
-body.dark-mode {
-    --bg-color: var(--dark-bg);
-    --card-bg-color: var(--dark-card-bg);
-    --text-color: var(--dark-text);
-    --heading-color: var(--dark-heading);
-    --subtle-text-color: var(--dark-subtle-text);
-}
-
-/* --- Animations --- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card {
-    animation: fadeInUp 0.5s ease-out forwards;
-    opacity: 0; /* Start hidden */
-}
-/* Stagger animations for cards */
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--accent-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--primary-hover-color);
+    color: var(--accent-hover-color);
 }
 
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-h1, h2 {
-    font-weight: 600;
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--heading-color);
+    margin: 0;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 4rem; /* Bold typography */
 }
 
 h2 {
+    font-size: 3rem;
     text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
-    color: var(--heading-color);
+    padding-bottom: 1rem;
+    margin-bottom: 4rem;
+    border-bottom: 2px solid var(--border-color);
 }
 
 /* --- Header --- */
 .main-header {
-    background-color: var(--card-bg-color);
-    padding: 1rem 0;
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .main-header .container {
@@ -112,14 +76,9 @@ h2 {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--heading-color);
-}
-
-.main-nav {
-    display: flex;
-    align-items: center;
 }
 
 .main-nav ul {
@@ -130,92 +89,88 @@ h2 {
 }
 
 .main-nav ul li {
-    margin-left: 25px;
+    margin-left: 40px;
 }
 
 .main-nav ul li a {
     font-weight: 600;
-    color: var(--subtle-text-color);
-    transition: color 0.3s ease;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
-/* --- Dark Mode Toggle --- */
-.dark-mode-toggle {
-    cursor: pointer;
-    margin-left: 20px;
-    font-size: 1.5rem;
+/* Dark mode toggle is removed for this design, as it's dark by default */
+.dark-mode-toggle { display: none; }
+
+/* --- Animations --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: 0.2s;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 
 /* --- Hero Section --- */
 .hero {
-    background: var(--dark-card-bg);
-    color: var(--dark-text);
     text-align: center;
-    padding: 4rem 2rem;
-    transition: background-color 0.3s ease;
-}
-
-body.dark-mode .hero {
-    background: #1e1e1e;
-}
-
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--dark-heading);
+    padding: 8rem 0; /* Lots of whitespace */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.25rem;
+    max-width: 650px;
+    margin: 1.5rem auto 2.5rem auto;
+    color: #a0a0a0;
 }
 
 .btn {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2.5rem;
     border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--accent-color);
+    color: #111;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-hover-color);
-    color: #fff;
+    background-color: transparent;
+    color: var(--accent-color);
 }
 
-/* --- Category & Review Grids --- */
+/* --- Sections & Grids --- */
 .featured-categories, .latest-reviews {
-    padding: 3rem 0;
+    padding: 6rem 0;
 }
 
 .category-grid, .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
-/* --- Cards (Categories & Reviews) --- */
+/* --- Cards --- */
 .category-card, .review-card {
-    background-color: var(--card-bg-color);
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
-    box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .category-card:hover, .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
 }
 
 .category-card {
@@ -223,80 +178,185 @@ body.dark-mode .hero {
 }
 
 .category-card img {
-    height: 180px;
+    height: 200px;
     width: 100%;
     object-fit: cover;
+    filter: grayscale(100%); /* Monochrome images */
+    transition: filter 0.3s ease;
+}
+
+.category-card:hover img {
+    filter: grayscale(0%);
 }
 
 .category-card h3 {
-    padding: 1.5rem;
-    margin: 0;
-    color: var(--heading-color);
+    padding: 2rem;
+    font-size: 1.5rem;
 }
 
 .review-card img {
-    height: 200px;
+    height: 220px;
     width: 100%;
     object-fit: cover;
 }
 
 .review-card-content {
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .review-category {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 0.2rem 0.6rem;
-    border-radius: 15px;
+    background-color: var(--accent-color);
+    color: #111;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
     font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
 .review-card h3 {
-    margin: 0.5rem 0;
-    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
 }
 
 .review-card h3 a {
     color: var(--heading-color);
-    transition: color 0.3s ease;
 }
 
 .review-card p {
-    margin-bottom: 1rem;
-    color: var(--subtle-text-color);
+    margin-bottom: 1.5rem;
+    color: #a0a0a0;
 }
 
 .read-more {
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 /* --- Footer --- */
 .main-footer {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text);
+    border-top: 1px solid var(--border-color);
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.dark-mode .main-footer {
-    background: #1e1e1e;
+    padding: 4rem 0;
+    margin-top: 4rem;
 }
 
 .main-footer .footer-nav {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .main-footer .footer-nav a {
-    color: var(--dark-text);
-    margin: 0 10px;
+    color: #a0a0a0;
+    margin: 0 15px;
+    font-weight: 500;
 }
 
-.main-footer .footer-nav a:hover {
-    text-decoration: underline;
+.main-footer p {
+    color: #666;
+}
+
+/* --- Review Page Specific Styles --- */
+.review-page-container {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    padding: 3rem;
+    border-radius: 8px;
+    margin-top: 4rem;
+}
+
+.review-header h1 {
+    font-size: 3.5rem;
+}
+
+.review-header .product-subtitle {
+    font-size: 1.3rem;
+    color: #a0a0a0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.product-main-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+}
+
+.review-content h2 {
+    text-align: left;
+    font-size: 2.2rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin: 3rem 0 1.5rem 0;
+}
+
+.pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+    font-size: 1.1rem;
+}
+
+.pros-cons h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.pros-cons ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pros-cons li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 30px;
+}
+
+.pros-cons li::before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.pros li::before {
+    content: '✓';
+    color: #28a745;
+}
+
+.cons li::before {
+    content: '✗';
+    color: #dc3545;
+}
+
+.affiliate-button-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.affiliate-button-section h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.affiliate-button {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    background-color: var(--accent-color);
+    color: #111;
+    border: 2px solid var(--accent-color);
+}
+.affiliate-button:hover {
+    background-color: transparent;
+    color: var(--accent-color);
 }

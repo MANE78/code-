@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
 
-    // Check for saved user preference, if any, on page load
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        if (currentTheme === 'dark-mode') {
-            body.classList.add('dark-mode');
-            darkModeToggle.textContent = '☀️';
-        }
-    }
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
 
-    darkModeToggle.addEventListener('click', () => {
-        if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-            localStorage.setItem('theme', 'light-mode');
-            darkModeToggle.textContent = '🌙';
-        } else {
-            body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark-mode');
-            darkModeToggle.textContent = '☀️';
-        }
+    const observerOptions = {
+        root: null, // relative to the viewport
+        rootMargin: '0px',
+        threshold: 0.1 // 10% of the item must be visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: stop observing the element once it's visible
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    revealElements.forEach(element => {
+        observer.observe(element);
     });
+
 });
