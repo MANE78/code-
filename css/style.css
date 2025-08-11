@@ -1,15 +1,30 @@
 /* --- "Million-Dollar" Design - Dramatic Minimalist --- */
 
-/* --- Core Variables --- */
+/* --- Core Variables & Theming --- */
 :root {
+    /* Light Theme (Default) */
+    --bg-color: #ffffff;
+    --card-color: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-color: #212529;
+    --heading-color: #000000;
+    --accent-color: #007BFF; /* Blue for light theme */
+    --accent-hover-color: #0056b3;
+    --accent-text-color: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
     --bg-color: #111111;
     --card-color: #1a1a1a;
     --border-color: #333333;
     --text-color: #f0f0f0;
     --heading-color: #ffffff;
-    --accent-color: #FFD700; /* Gold/Yellow for high contrast */
+    --accent-color: #FFD700; /* Gold/Yellow for dark theme */
     --accent-hover-color: #ffffff;
+    --accent-text-color: #111111;
 }
+
 
 /* --- Base & Typography --- */
 body {
@@ -20,6 +35,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -52,7 +68,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 4rem; /* Bold typography */
+    font-size: 4rem;
 }
 
 h2 {
@@ -67,6 +83,8 @@ h2 {
 .main-header {
     padding: 2rem 0;
     border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
 }
 
 .main-header .container {
@@ -79,6 +97,17 @@ h2 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--heading-color);
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--accent-color);
+    font-weight: 400;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
 }
 
 .main-nav ul {
@@ -98,8 +127,16 @@ h2 {
     color: var(--text-color);
 }
 
-/* Dark mode toggle is removed for this design, as it's dark by default */
-.dark-mode-toggle { display: none; }
+/* --- Theme Toggle --- */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 20px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+}
+
 
 /* --- Animations --- */
 .reveal-on-scroll {
@@ -118,14 +155,15 @@ h2 {
 /* --- Hero Section --- */
 .hero {
     text-align: center;
-    padding: 8rem 0; /* Lots of whitespace */
+    padding: 8rem 0;
 }
 
 .hero p {
     font-size: 1.25rem;
     max-width: 650px;
     margin: 1.5rem auto 2.5rem auto;
-    color: #a0a0a0;
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
 .btn {
@@ -140,12 +178,32 @@ h2 {
 
 .btn-primary {
     background-color: var(--accent-color);
-    color: #111;
+    color: var(--accent-text-color);
 }
 
 .btn-primary:hover {
     background-color: transparent;
     color: var(--accent-color);
+}
+
+/* --- Category Page Specific Styles --- */
+.category-page {
+    padding: 4rem 0;
+}
+
+.category-title {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.category-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
 }
 
 /* --- Sections & Grids --- */
@@ -165,7 +223,7 @@ h2 {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .category-card:hover, .review-card:hover {
@@ -181,7 +239,7 @@ h2 {
     height: 200px;
     width: 100%;
     object-fit: cover;
-    filter: grayscale(100%); /* Monochrome images */
+    filter: grayscale(100%);
     transition: filter 0.3s ease;
 }
 
@@ -207,7 +265,7 @@ h2 {
 .review-category {
     display: inline-block;
     background-color: var(--accent-color);
-    color: #111;
+    color: var(--accent-text-color);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -227,7 +285,8 @@ h2 {
 
 .review-card p {
     margin-bottom: 1.5rem;
-    color: #a0a0a0;
+    color: var(--text-color);
+    opacity: 0.8;
 }
 
 .read-more {
@@ -248,18 +307,19 @@ h2 {
 }
 
 .main-footer .footer-nav a {
-    color: #a0a0a0;
+    color: var(--text-color);
+    opacity: 0.8;
     margin: 0 15px;
     font-weight: 500;
 }
 
 .main-footer p {
-    color: #666;
+    opacity: 0.6;
 }
 
 /* --- Responsive Navigation --- */
 .hamburger {
-    display: none; /* Hidden by default */
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
@@ -276,7 +336,21 @@ h2 {
     transition: all 0.3s ease-in-out;
 }
 
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 @media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
     .main-nav .nav-links {
         display: none;
         position: fixed;
@@ -288,6 +362,7 @@ h2 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: 1000;
     }
 
     .main-nav .nav-links.active {
@@ -304,6 +379,7 @@ h2 {
 
     .hamburger {
         display: block;
+        z-index: 1001;
     }
 }
 
@@ -322,7 +398,8 @@ h2 {
 
 .review-header .product-subtitle {
     font-size: 1.3rem;
-    color: #a0a0a0;
+    color: var(--text-color);
+    opacity: 0.8;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
@@ -343,10 +420,16 @@ h2 {
 
 .pros-cons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin: 3rem 0;
     font-size: 1.1rem;
+}
+
+@media (min-width: 500px) {
+    .pros-cons {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .pros-cons h3 {
@@ -391,6 +474,7 @@ h2 {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 .affiliate-button-section h3 {
@@ -403,7 +487,7 @@ h2 {
     font-size: 1.2rem;
     padding: 1rem 2.5rem;
     background-color: var(--accent-color);
-    color: #111;
+    color: var(--accent-text-color);
     border: 2px solid var(--accent-color);
 }
 .affiliate-button:hover {
