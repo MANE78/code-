@@ -1,0 +1,230 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #007BFF;
+    --primary-hover-color: #0056b3;
+    --dark-grey: #333;
+    --medium-grey: #555;
+    --light-grey: #f4f4f4;
+    --white-color: #fff;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-hover-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1, h2 {
+    font-weight: 600;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--dark-grey);
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-grey);
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    font-weight: 600;
+    color: var(--medium-grey);
+    transition: color 0.3s ease;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: var(--dark-grey);
+    color: var(--white-color);
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    color: var(--white-color);
+}
+
+/* --- Category & Review Grids --- */
+.featured-categories, .latest-reviews {
+    padding: 3rem 0;
+}
+
+.category-grid, .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Cards (Categories & Reviews) --- */
+.category-card, .review-card {
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover, .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-card {
+    text-align: center;
+}
+
+.category-card img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    padding: 1.5rem;
+    margin: 0;
+    color: var(--dark-grey);
+}
+
+.review-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.review-card-content {
+    padding: 1.5rem;
+}
+
+.review-category {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.review-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.review-card h3 a {
+    color: var(--dark-grey);
+}
+
+.review-card p {
+    margin-bottom: 1rem;
+    color: var(--medium-grey);
+}
+
+.read-more {
+    font-weight: 600;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.main-footer .footer-nav {
+    margin-bottom: 1rem;
+}
+
+.main-footer .footer-nav a {
+    color: var(--white-color);
+    margin: 0 10px;
+}
+
+.main-footer .footer-nav a:hover {
+    text-decoration: underline;
+}
