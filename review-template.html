@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Product Name] Review - CortexHome</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .review-page-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: var(--white-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        .review-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .review-header .product-subtitle {
+            font-size: 1.2rem;
+            color: var(--medium-grey);
+            margin-bottom: 1.5rem;
+        }
+        .product-main-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .review-content h2 {
+            text-align: left;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .pros-cons ul {
+            list-style: none;
+            padding: 0;
+        }
+        .pros-cons li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        .pros-cons li::before {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+        }
+        .pros li::before {
+            content: '✓';
+            color: #28a745;
+        }
+        .cons li::before {
+            content: '✗';
+            color: #dc3545;
+        }
+        .affiliate-button-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--light-grey);
+            border-radius: 8px;
+        }
+        .affiliate-button-section h3 {
+            margin-top: 0;
+        }
+        .affiliate-button {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            background-color: #ff8c00;
+            color: var(--white-color);
+        }
+        .affiliate-button:hover {
+            background-color: #cc7000;
+            color: var(--white-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">CortexHome</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="category-security.html">Security</a></li>
+                    <li><a href="category-lighting.html">Lighting</a></li>
+                    <li><a href="category-climate.html">Climate</a></li>
+                    <li><a href="category-kitchen.html">Kitchen</a></li>
+                    <li><a href="ecosystems.html">Ecosystems</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="review-page-container">
+            <header class="review-header">
+                <h1>[Product Name]</h1>
+                <p class="product-subtitle">[A short, catchy subtitle about the product]</p>
+            </header>
+
+            <img src="images/review-placeholder.jpg" alt="[Product Name]" class="product-main-image">
+
+            <article class="review-content">
+                <p class="introduction">
+                    [Start with a compelling introduction. What problem does this product solve? What's new about it? Set the stage for the review.]
+                </p>
+
+                <div class="pros-cons">
+                    <div class="pros">
+                        <h3>Pros</h3>
+                        <ul>
+                            <li>[Positive Point 1]</li>
+                            <li>[Positive Point 2]</li>
+                            <li>[Positive Point 3]</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h3>Cons</h3>
+                        <ul>
+                            <li>[Negative Point 1]</li>
+                            <li>[Negative Point 2]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Design and Build Quality</h2>
+                <p>
+                    [Talk about the physical aspects of the product. How does it look and feel? What materials is it made of? Is it well-built? How does it compare to competitors in terms of design?]
+                </p>
+
+                <h2>Performance and Features</h2>
+                <p>
+                    [This is the core of the review. How well does the product work? Detail its main features and how they perform in real-world use. Be specific. Use data if possible.]
+                </p>
+
+                <h2>Setup and Software</h2>
+                <p>
+                    [How easy was it to set up? What is the companion app like? Is the software user-friendly or buggy? This is a critical section for smart home devices.]
+                </p>
+
+                <h2>Conclusion: Is It Worth It?</h2>
+                <p>
+                    [Summarize the findings. Give a final verdict. Who is this product for? Is it a good value for the money? Should the reader buy it?]
+                </p>
+
+                <section class="affiliate-button-section">
+                    <h3>Check Latest Price</h3>
+                    <a href="[Your-Affiliate-Link-Here]" class="btn affiliate-button" target="_blank" rel="nofollow noopener">View on Amazon</a>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-nav">
+                <a href="#">About Us</a> |
+                <a href="#">Contact</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Affiliate Disclosure</a>
+            </div>
+            <p>&copy; 2025 CortexHome. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
